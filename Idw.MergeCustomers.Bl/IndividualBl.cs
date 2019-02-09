@@ -2,9 +2,7 @@
 using Idw.MergeCustomers.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace Idw.MergeCustomers.Bl
 {
@@ -28,9 +26,27 @@ namespace Idw.MergeCustomers.Bl
             {
                 return dao.ListAll();
             }
-            catch (DataException ex)
+            catch (DataAccessException ex)
             {
                 throw new BusinessException("Error BusinessLogic", ex);
+            }
+        }
+
+        /// <summary>
+        /// Merge customers.
+        /// </summary>
+        /// <param name="dt">DataTable customers</param>
+        /// <returns></returns>
+        public void MergeCustomer(DataTable dt)
+        {
+            int idClient1 = Convert.ToInt32(dt.Rows[0].ItemArray[0]);
+            int idClient2 = Convert.ToInt32(dt.Rows[1].ItemArray[0]);
+            if (idClient1 == idClient2)
+            {
+                throw new BusinessException("Error: Equals Customers.");
+            } else
+            {
+
             }
         }
     }

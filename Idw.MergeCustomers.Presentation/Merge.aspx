@@ -38,9 +38,11 @@
                                 <div class="panel-heading">Customers selected for merge</div>
                                 <div class="panel-body">
                                     <asp:GridView ID="gvMerge" runat="server" CssClass="table table-bordered"></asp:GridView>
-                                    <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
+                                    <div class="alert alert-warning" role="alert">
+                                        <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
+                                    </div>
                                     <div>
-                                        <asp:Button ID="btnMerge" runat="server" Text="Merge" CssClass="btn btn-success btn-flat btn-sm pull-left" OnClick="btnMerge_Click1" />
+                                        <asp:Button ID="btnMerge" runat="server" Text="Merge" CssClass="btn btn-success btn-flat btn-sm pull-left" OnClick="btnMerge_SendMerge" />
                                         <asp:Button ID="btnClear" runat="server" Text="Cancel" CssClass="btn btn-danger btn-flat btn-sm pull-right" OnClick="btnClear_Click" />
                                     </div>
                                 </div>

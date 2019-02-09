@@ -54,24 +54,6 @@ namespace Idw.MergeCustomers.Presentation
             gvCustomers.DataBind();
         }
 
-        protected void chkSelect_CheckedChanged(object sender, EventArgs e)
-        {
-            DataTable dtMerge = (DataTable)ViewState["gvMerge"];
-            CheckBox chk = (CheckBox)sender;
-            if (chk.Checked)
-            {
-                GridViewRow gvr = (GridViewRow)chk.NamingContainer;
-                DataRow drow = dtMerge.NewRow();
-                drow["Id"] = gvCustomers.Rows[gvr.RowIndex].Cells[1].Text;
-                drow["FirstName"] = gvCustomers.Rows[gvr.RowIndex].Cells[2].Text;
-                drow["LastName"] = gvCustomers.Rows[gvr.RowIndex].Cells[3].Text;
-                dtMerge.Rows.Add(drow);
-
-                gvMerge.DataSource = dtMerge;
-                gvMerge.DataBind();
-            }
-        }
-
         protected void btnClear_Click(object sender, EventArgs e)
         {
             CreateDataTable();
@@ -89,29 +71,50 @@ namespace Idw.MergeCustomers.Presentation
             ViewState["gvMerge"] = dtMerge;
             gvMerge.DataSource = dtMerge;
             gvMerge.DataBind();
+            lblMessage.Text = "No selected customers";
         }
 
         protected void btnMerge_Click(object sender, EventArgs e)
         {
             DataTable dtMerge = (DataTable)ViewState["gvMerge"];
             Button chk = (Button)sender;
-            if (true)
+            if (dtMerge.Rows.Count <= 1)
             {
+                //Agregar filas a la tabla de merge
                 GridViewRow gvr = (GridViewRow)chk.NamingContainer;
                 DataRow drow = dtMerge.NewRow();
                 drow["Id"] = gvCustomers.Rows[gvr.RowIndex].Cells[1].Text;
                 drow["FirstName"] = gvCustomers.Rows[gvr.RowIndex].Cells[2].Text;
                 drow["LastName"] = gvCustomers.Rows[gvr.RowIndex].Cells[3].Text;
                 dtMerge.Rows.Add(drow);
-
                 gvMerge.DataSource = dtMerge;
                 gvMerge.DataBind();
+                lblMessage.Text = string.Empty;
             }
         }
 
-        protected void btnMerge_Click1(object sender, EventArgs e)
+        protected void btnMerge_SendMerge(object sender, EventArgs e)
         {
-
+            DataTable dtMerge = (DataTable)ViewState["gvMerge"];
+            if (dtMerge.Rows.Count < 2)
+            {
+                lblMessage.Text = "Select two customers!";
+            }
+            else
+            {
+                lblMessage.Text = string.Empty;
+                try
+                {
+                    IndividualBl bl = new IndividualBl(daoIndividual);
+                    bl.MergeCustomer(dtMerge);
+                }
+                catch (BusinessException ex)
+                {
+                    lblMessage.Text = ex.Message;
+                }
+                
+                
+            }
         }
     }
 }
