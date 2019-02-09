@@ -39,6 +39,26 @@ namespace Idw.MergeCustomers.Entities
         private string password;
 
         /// <summary>
+        /// The addressId.
+        /// </summary>
+        private int addressId;
+
+        /// <summary>
+        /// The streetName;
+        /// </summary>
+        private string streetName;
+
+        /// <summary>
+        /// The city.
+        /// </summary>
+        private string city;
+
+        /// <summary>
+        /// The state.
+        /// </summary>
+        private string state;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:Idw.MergeCustomers.Entities.Individual"/> class.
         /// </summary>
         public Individual()
@@ -74,5 +94,25 @@ namespace Idw.MergeCustomers.Entities
         /// Gets or sets the password.
         /// </summary>
         public string Password { get => password; set => password = value; }
+
+        /// <summary>
+        /// Gets or sets the addressId.
+        /// </summary>
+        public int AddressId { get => addressId; set => addressId = value; }
+
+        /// <summary>
+        /// Gets or sets the streetName.
+        /// </summary>
+        public string StreetName { get => streetName; set => streetName = value; }
+
+        /// <summary>
+        /// Gets or sets the city.
+        /// </summary>
+        public string City { get => city; set => city = value; }
+
+        /// <summary>
+        /// Gets or sets the state.
+        /// </summary>
+        public string State { get => state; set => state = value; }
     }
 }

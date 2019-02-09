@@ -40,8 +40,12 @@ namespace Idw.MergeCustomers.Data
                     {
                         command.CommandType = CommandType.Text;
 
-                        command.CommandText = $"SELECT `RecordNumber`, `FirstName`, `LastName`, `Gender`, `Username`, " +
-                            $"`Password` FROM `individual`";
+                        command.CommandText = $"SELECT " +
+                            $"i.RecordNumber, i.FirstName, i.LastName, i.Gender, a.AddressId, a.StreetName, a.City, a.State " +
+                            $"FROM individual i " +
+                            $"INNER JOIN individualaddress ia ON ia.RecordNumber = i.RecordNumber " +
+                            $"INNER JOIN address a ON a.AddressId = ia.AddressId " +
+                            $"WHERE 1";
 
                         MySqlDataReader res = command.ExecuteReader();
 
@@ -49,12 +53,14 @@ namespace Idw.MergeCustomers.Data
                         {
                             Individual obj = new Individual();
 
-                            obj.RecordNumber = (int)res["RecordNumber"];
-                            obj.FirstName = (string)res["FirstName"];
-                            obj.LastName = (string)res["LastName"];
-                            obj.Gender = (string)res["Gender"];
-                            obj.Username = (string)res["Username"];
-                            obj.Password = (string)res["Password"];
+                            obj.RecordNumber = Convert.ToInt32(res["RecordNumber"]);
+                            obj.FirstName = Convert.ToString(res["FirstName"]);
+                            obj.LastName = Convert.ToString(res["LastName"]);
+                            obj.Gender = Convert.ToString(res["Gender"]);
+                            obj.AddressId = Convert.ToInt32(res["AddressId"]);
+                            obj.StreetName = Convert.ToString(res["StreetName"]);
+                            obj.City = Convert.ToString(res["City"]);
+                            obj.State = Convert.ToString(res["State"]);
 
                             listIndividuals.Add(obj);
                         }
