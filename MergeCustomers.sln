@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idw.MergeCustomers.Presentation", "Idw.MergeCustomers.Presentation\Idw.MergeCustomers.Presentation.csproj", "{ADBDCBB0-5AFA-402E-96D5-7DB7476A4329}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADBDCBB0-5AFA-402E-96D5-7DB7476A4329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBDCBB0-5AFA-402E-96D5-7DB7476A4329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBDCBB0-5AFA-402E-96D5-7DB7476A4329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBDCBB0-5AFA-402E-96D5-7DB7476A4329}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FB59870-A67F-49D3-AE0D-DD9CEB606CA7}
+	EndGlobalSection
+EndGlobal
