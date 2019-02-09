@@ -224,6 +224,10 @@
       <Project>{83eb078b-f0c6-41d0-bed9-afdcc8994e57}</Project>
       <Name>Idw.MergeCustomers.Bl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Idw.MergeCustomers.Data\Idw.MergeCustomers.Data.csproj">
+      <Project>{aefa34db-e9ea-45b1-b87b-a8d6a8bde418}</Project>
+      <Name>Idw.MergeCustomers.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Idw.MergeCustomers.Entities\Idw.MergeCustomers.Entities.csproj">
       <Project>{14904357-9036-460f-9fc6-e0608077a93a}</Project>
       <Name>Idw.MergeCustomers.Entities</Name>

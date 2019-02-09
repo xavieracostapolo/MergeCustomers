@@ -11,11 +11,15 @@ namespace Idw.MergeCustomers.Bl
     public class IndividualBl
     {
 
-        DaoIndividual dao;
+        private IDaoIndividual dao;
 
-        public IndividualBl(string stringConn)
+        /// <summary>
+        /// Cto class IndividualBl
+        /// </summary>
+        /// <param name="dao">Inyection dependence IDaoIndividual</param>
+        public IndividualBl(IDaoIndividual dao)
         {
-            this.dao = new DaoIndividual(stringConn);
+            this.dao = dao;
         }
 
         public ICollection<Individual> ListIndividuals()

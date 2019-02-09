@@ -1,4 +1,5 @@
 ﻿using Idw.MergeCustomers.Bl;
+using Idw.MergeCustomers.Data;
 using Idw.MergeCustomers.Entities;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,14 @@ namespace Idw.MergeCustomers.Presentation
 {
     public partial class Merge : System.Web.UI.Page
     {
-        private readonly string conn = ConfigurationManager.AppSettings["stringConnection"];
+        /// <summary>
+        /// Variable access data
+        /// </summary>
+        DaoIndividual daoIndividual = new DaoIndividual(ConfigurationManager.AppSettings["stringConnection"]);
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            IndividualBl bl = new IndividualBl(conn);
+            IndividualBl bl = new IndividualBl(daoIndividual);
 
             gvCustomers.DataSource = bl.ListIndividuals();
             gvCustomers.DataBind();

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DaoIndividual.cs" />
     <Compile Include="DataException.cs" />
+    <Compile Include="IDaoIndividual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

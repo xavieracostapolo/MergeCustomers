@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace Idw.MergeCustomers.Data
 {
-    public class DaoIndividual
+    public class DaoIndividual : IDaoIndividual
     {
         /// <summary>
         /// The connection string.
