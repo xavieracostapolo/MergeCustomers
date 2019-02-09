@@ -18,6 +18,7 @@ namespace Idw.MergeCustomers.Presentation
         /// Variable access data
         /// </summary>
         DaoIndividual daoIndividual = new DaoIndividual(ConfigurationManager.AppSettings["stringConnection"]);
+        DaoAddress daoAddress = new DaoAddress(ConfigurationManager.AppSettings["stringConnection"]);
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,7 +44,7 @@ namespace Idw.MergeCustomers.Presentation
         {
             if (ViewState["dataGrid"] == null)
             {
-                IndividualBl bl = new IndividualBl(daoIndividual);
+                IndividualBl bl = new IndividualBl(daoIndividual, daoAddress);
                 ViewState["dataGrid"] = bl.ListIndividuals();
                 gvCustomers.DataSource = ViewState["dataGrid"];
             }
@@ -105,8 +106,11 @@ namespace Idw.MergeCustomers.Presentation
                 lblMessage.Text = string.Empty;
                 try
                 {
-                    IndividualBl bl = new IndividualBl(daoIndividual);
+                    IndividualBl bl = new IndividualBl(daoIndividual, daoAddress);
                     bl.MergeCustomer(dtMerge);
+                    ViewState["dataGrid"] = null;
+                    this.CreateDataTable();
+                    this.FillGrid();
                 }
                 catch (BusinessException ex)
                 {

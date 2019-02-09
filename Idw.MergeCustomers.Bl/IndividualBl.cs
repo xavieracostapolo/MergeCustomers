@@ -9,22 +9,24 @@ namespace Idw.MergeCustomers.Bl
     public class IndividualBl
     {
 
-        private IDaoIndividual dao;
+        private IDaoIndividual daoIndividual;
+        private IDaoAddress daoAddress;
 
         /// <summary>
         /// Cto class IndividualBl
         /// </summary>
         /// <param name="dao">Inyection dependence IDaoIndividual</param>
-        public IndividualBl(IDaoIndividual dao)
+        public IndividualBl(IDaoIndividual daoIndividual, IDaoAddress daoAddress)
         {
-            this.dao = dao;
+            this.daoIndividual = daoIndividual;
+            this.daoAddress = daoAddress;
         }
 
         public ICollection<Individual> ListIndividuals()
         {
             try
             {
-                return dao.ListAll();
+                return daoIndividual.ListAll();
             }
             catch (DataAccessException ex)
             {
@@ -44,9 +46,17 @@ namespace Idw.MergeCustomers.Bl
             if (idClient1 == idClient2)
             {
                 throw new BusinessException("Error: Equals Customers.");
-            } else
+            }
+            else
             {
-
+                try
+                {
+                    daoAddress.UpdateAddressByCustomer(idClient1, idClient2);  
+                }
+                catch (DataAccessException ex)
+                {
+                    throw new BusinessException("Error Business Logic Merge Customers", ex);
+                }
             }
         }
     }

@@ -55,8 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaoAddress.cs" />
     <Compile Include="DaoIndividual.cs" />
     <Compile Include="DataException.cs" />
+    <Compile Include="IDaoAddress.cs" />
     <Compile Include="IDaoIndividual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
