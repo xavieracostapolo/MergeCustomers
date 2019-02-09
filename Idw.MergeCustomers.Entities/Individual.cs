@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Idw.MergeCustomers.Entities
 {
+    [Serializable]
     public class Individual
     {
         /// <summary>

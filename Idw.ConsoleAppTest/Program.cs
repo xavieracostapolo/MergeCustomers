@@ -1,4 +1,5 @@
 ﻿using Idw.MergeCustomers.Bl;
+using Idw.MergeCustomers.Data;
 using Idw.MergeCustomers.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,13 @@ namespace Idw.ConsoleAppTest
     {
         static void Main(string[] args)
         {
-            string conn = ConfigurationManager.AppSettings["stringConnection"];
+            /// <summary>
+            /// Variable access data
+            /// </summary>
+            DaoIndividual daoIndividual = new DaoIndividual(ConfigurationManager.AppSettings["stringConnection"]);
 
-            IndividualBl bl = new IndividualBl(conn);
-
-            foreach (Individual p in bl.ListIndividuals())
-            {
-                Console.WriteLine(p.FirstName);
-            }
+            Individual obj = daoIndividual.GetById(1);
+            Console.WriteLine(obj.FirstName);
 
             Console.ReadLine();
         }

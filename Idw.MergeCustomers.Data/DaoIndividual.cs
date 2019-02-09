@@ -24,6 +24,51 @@ namespace Idw.MergeCustomers.Data
         }
 
         /// <summary>
+        /// Get Individual By Id.
+        /// </summary>
+        /// <param name="id">Id Individual.</param>
+        /// <returns>Return object Individual.</returns>
+        public Individual GetById(int id)
+        {
+            Individual individual = new Individual();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(stringConn))
+                {
+                    con.Open();
+                    using (var command = con.CreateCommand())
+                    {
+                        command.CommandType = CommandType.Text;
+
+                        command.CommandText = $"SELECT " +
+                            $"i.RecordNumber, i.FirstName, i.LastName, i.Gender " +
+                            $"FROM individual i " +
+                            $"WHERE i.RecordNumber = {id}";
+
+                        MySqlDataReader res = command.ExecuteReader();
+
+                        while (res.Read())
+                        {
+                            Individual obj = new Individual();
+
+                            obj.RecordNumber = Convert.ToInt32(res["RecordNumber"]);
+                            obj.FirstName = Convert.ToString(res["FirstName"]);
+                            obj.LastName = Convert.ToString(res["LastName"]);
+                            obj.Gender = Convert.ToString(res["Gender"]);
+
+                            individual = obj;
+                        }
+                    }
+                }
+                return individual;
+            }
+            catch (Exception ex)
+            {
+                throw new DataException("Error DataAccess", ex);
+            }
+        }
+
+        /// <summary>
         /// Lists all.
         /// </summary>
         /// <returns>The all.</returns>
