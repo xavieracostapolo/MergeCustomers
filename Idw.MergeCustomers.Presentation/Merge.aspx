@@ -15,14 +15,9 @@
                                 AllowSorting="true"
                                 AllowPaging="true"
                                 PageSize="10"
-                                CssClass="table table-bordered" OnPageIndexChanging="gvCustomers_PageIndexChanging">
+                                CssClass="table table-bordered table-hover" OnPageIndexChanging="gvCustomers_PageIndexChanging">
                                 <PagerStyle CssClass="pagination-ys" />
                                 <Columns>
-                                    <asp:TemplateField HeaderText="Select">
-                                        <ItemTemplate>
-                                            <asp:Button ID="btnMerge" runat="server" Text="Select" CssClass="btn btn-success btn-flat btn-xs pull-left" OnClick="btnMerge_Click" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
                                     <asp:BoundField DataField="RecordNumber" HeaderText="ID" />
                                     <asp:BoundField DataField="FirstName" HeaderText="FirstName" />
                                     <asp:BoundField DataField="LastName" HeaderText="LastName" />
@@ -30,6 +25,11 @@
                                     <asp:BoundField DataField="StreetName" HeaderText="StreetName" />
                                     <asp:BoundField DataField="City" HeaderText="City" />
                                     <asp:BoundField DataField="State" HeaderText="State" />
+                                    <asp:TemplateField HeaderText="Select">
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnMerge" runat="server" Text='select' CssClass="btn btn-success btn-flat btn-xs pull-left" OnClick="btnMerge_Click" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>

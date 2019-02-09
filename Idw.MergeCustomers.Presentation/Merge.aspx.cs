@@ -2,6 +2,7 @@
 using Idw.MergeCustomers.Data;
 using Idw.MergeCustomers.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -25,6 +26,7 @@ namespace Idw.MergeCustomers.Presentation
             if (!Page.IsPostBack)
             {
                 this.FillGrid();
+                GroupGridView(gvCustomers.Rows, 0, 4);
                 this.CreateDataTable();
                 lblMessage.Text = "No selected customers";
             }
@@ -35,6 +37,7 @@ namespace Idw.MergeCustomers.Presentation
             this.FillGrid();
             gvCustomers.PageIndex = e.NewPageIndex;
             gvCustomers.DataBind();
+            GroupGridView(gvCustomers.Rows, 0, 4);
         }
 
         /// <summary>
@@ -84,9 +87,9 @@ namespace Idw.MergeCustomers.Presentation
                 //Agregar filas a la tabla de merge
                 GridViewRow gvr = (GridViewRow)chk.NamingContainer;
                 DataRow drow = dtMerge.NewRow();
-                drow["Id"] = gvCustomers.Rows[gvr.RowIndex].Cells[1].Text;
-                drow["FirstName"] = gvCustomers.Rows[gvr.RowIndex].Cells[2].Text;
-                drow["LastName"] = gvCustomers.Rows[gvr.RowIndex].Cells[3].Text;
+                drow["Id"] = gvCustomers.Rows[gvr.RowIndex].Cells[0].Text;
+                drow["FirstName"] = gvCustomers.Rows[gvr.RowIndex].Cells[1].Text;
+                drow["LastName"] = gvCustomers.Rows[gvr.RowIndex].Cells[2].Text;
                 dtMerge.Rows.Add(drow);
                 gvMerge.DataSource = dtMerge;
                 gvMerge.DataBind();
@@ -111,6 +114,7 @@ namespace Idw.MergeCustomers.Presentation
                     ViewState["dataGrid"] = null;
                     this.CreateDataTable();
                     this.FillGrid();
+                    GroupGridView(gvCustomers.Rows, 0, 4);
                 }
                 catch (BusinessException ex)
                 {
@@ -119,6 +123,50 @@ namespace Idw.MergeCustomers.Presentation
                 
                 
             }
+        }
+
+        /// <summary>
+        /// Group rows view.
+        /// </summary>
+        /// <param name="gvrc">Grid view rows</param>
+        /// <param name="startIndex">Start index column.</param>
+        /// <param name="total">Totl column.</param>
+        private void GroupGridView(GridViewRowCollection gvrc, int startIndex, int total)
+        {
+            if (total == 0) return;
+            int i, count = 1;
+            ArrayList lst = new ArrayList();
+            lst.Add(gvrc[0]);
+            var ctrl = gvrc[0].Cells[startIndex];
+            for (i = 1; i < gvrc.Count; i++)
+            {
+                TableCell nextCell = gvrc[i].Cells[startIndex];
+                if (ctrl.Text == nextCell.Text)
+                {
+                    count++;
+                    nextCell.Visible = false;
+                    lst.Add(gvrc[i]);
+                }
+                else
+                {
+                    if (count > 1)
+                    {
+                        ctrl.RowSpan = count;
+                        GroupGridView(new GridViewRowCollection(lst), startIndex + 1, total - 1);
+                    }
+                    count = 1;
+                    lst.Clear();
+                    ctrl = gvrc[i].Cells[startIndex];
+                    lst.Add(gvrc[i]);
+                }
+            }
+            if (count > 1)
+            {
+                ctrl.RowSpan = count;
+                GroupGridView(new GridViewRowCollection(lst), startIndex + 1, total - 1);
+            }
+            count = 1;
+            lst.Clear();
         }
     }
 }

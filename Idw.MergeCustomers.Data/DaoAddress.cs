@@ -21,6 +21,11 @@ namespace Idw.MergeCustomers.Data
             this.stringConn = stringConn;
         }
 
+        /// <summary>
+        /// Merge customers.
+        /// </summary>
+        /// <param name="idClientSource">Client Source.</param>
+        /// <param name="idClientDelete">Client Delete.</param>
         public void UpdateAddressByCustomer(int idClientSource, int idClientDelete)
         {
             try
