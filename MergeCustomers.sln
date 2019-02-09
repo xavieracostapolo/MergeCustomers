@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idw.MergeCustomers.Data", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idw.MergeCustomers.Bl", "Idw.MergeCustomers.Bl\Idw.MergeCustomers.Bl.csproj", "{83EB078B-F0C6-41D0-BED9-AFDCC8994E57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idw.MergeCustomers.Entities", "Idw.MergeCustomers.Entities\Idw.MergeCustomers.Entities.csproj", "{14904357-9036-460F-9FC6-E0608077A93A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Idw.ConsoleAppTest", "Idw.ConsoleAppTest\Idw.ConsoleAppTest.csproj", "{DBA5E9DE-C3F2-410E-9E6E-AB1853E7E7E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{83EB078B-F0C6-41D0-BED9-AFDCC8994E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83EB078B-F0C6-41D0-BED9-AFDCC8994E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83EB078B-F0C6-41D0-BED9-AFDCC8994E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14904357-9036-460F-9FC6-E0608077A93A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14904357-9036-460F-9FC6-E0608077A93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14904357-9036-460F-9FC6-E0608077A93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14904357-9036-460F-9FC6-E0608077A93A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA5E9DE-C3F2-410E-9E6E-AB1853E7E7E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA5E9DE-C3F2-410E-9E6E-AB1853E7E7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA5E9DE-C3F2-410E-9E6E-AB1853E7E7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA5E9DE-C3F2-410E-9E6E-AB1853E7E7E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
