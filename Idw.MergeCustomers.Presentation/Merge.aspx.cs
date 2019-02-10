@@ -133,6 +133,7 @@ namespace Idw.MergeCustomers.Presentation
         /// <param name="total">Totl column.</param>
         private void GroupGridView(GridViewRowCollection gvrc, int startIndex, int total)
         {
+            if (gvrc.Count <= 0) return;
             if (total == 0) return;
             int i, count = 1;
             ArrayList lst = new ArrayList();
