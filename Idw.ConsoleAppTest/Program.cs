@@ -19,7 +19,7 @@ namespace Idw.ConsoleAppTest
             /// </summary>
             DaoIndividual daoIndividual = new DaoIndividual(ConfigurationManager.AppSettings["stringConnection"]);
 
-            Individual obj = daoIndividual.GetById(1);
+            Individual obj = daoIndividual.GetIndividual("test", "test");
             Console.WriteLine(obj.FirstName);
 
             Console.ReadLine();
