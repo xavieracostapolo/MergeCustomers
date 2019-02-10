@@ -22,6 +22,38 @@ namespace Idw.MergeCustomers.Bl
             this.daoAddress = daoAddress;
         }
 
+        /// <summary>
+        /// Get Individual By Id.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password</param>
+        /// <returns>Return object Individual.</returns>
+        public Individual GetIndividual(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new BusinessException("Username not valid");
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new BusinessException("Password not valid");
+            }
+
+            try
+            {
+                return daoIndividual.GetIndividual(username, password);
+            }
+            catch (DataAccessException ex)
+            {
+                throw new BusinessException("Error BusinessLogic", ex);
+            }
+        }
+
+        /// <summary>
+        /// List Individuals.
+        /// </summary>
+        /// <returns>Return collection individual.</returns>
         public ICollection<Individual> ListIndividuals()
         {
             try

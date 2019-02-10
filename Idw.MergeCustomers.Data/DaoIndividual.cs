@@ -22,13 +22,14 @@ namespace Idw.MergeCustomers.Data
         {
             this.stringConn = stringConn;
         }
-
+        
         /// <summary>
         /// Get Individual By Id.
         /// </summary>
-        /// <param name="id">Id Individual.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password</param>
         /// <returns>Return object Individual.</returns>
-        public Individual GetById(int id)
+        public Individual GetIndividual(string username, string password)
         {
             Individual individual = new Individual();
             try
@@ -43,7 +44,7 @@ namespace Idw.MergeCustomers.Data
                         command.CommandText = $"SELECT " +
                             $"i.RecordNumber, i.FirstName, i.LastName, i.Gender " +
                             $"FROM individual i " +
-                            $"WHERE i.RecordNumber = {id}";
+                            $"WHERE i.Username = '{username}' AND Password = '{password}'";
 
                         MySqlDataReader res = command.ExecuteReader();
 
